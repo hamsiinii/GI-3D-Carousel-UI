@@ -1,0 +1,257 @@
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+
+:root{
+  --grid-size: 80px; /* distance between grid lines */
+  --grid-color: rgba(42, 2, 2, 0.06);
+  --grid-thickness: 2px;
+  --slider-top: 10%; /* default top offset for rotating slider - increase to move down */
+  --title-offset: -40px; /* negative = move up */
+}
+
+
+
+/*html, body {
+  background-color: #c8c8c8;
+  height: 100%;
+  height: auto;
+  overflow-x: hidden;
+  margin: 0;
+  min-height: 100%;
+  
+}
+
+body {
+    background-color: #e5e5e5;
+
+    background-image:
+        linear-gradient(#cfcfcf 1px, transparent 1px),
+        linear-gradient(90deg, #cfcfcf 1px, transparent 1px);
+
+    background-size: 40px 40px;
+    background-attachment: fixed;
+}
+
+*/
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    background-color: #e5e5e5;
+
+    background-image:
+        linear-gradient(#cfcfcf 1px, transparent 1px),
+        linear-gradient(90deg, #cfcfcf 1px, transparent 1px);
+
+    background-size: 40px 40px;
+    background-attachment: fixed;
+}
+
+
+.banner{
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+.banner .slider,
+.banner .content{
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid background: configurable spacing and thickness */
+.banner::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-color) var(--grid-thickness), transparent var(--grid-thickness)),
+    linear-gradient(90deg, var(--grid-color) var(--grid-thickness), transparent var(--grid-thickness));
+  background-size: var(--grid-size) var(--grid-size);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 1;
+}
+
+
+
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 270px;
+    top: var(--slider-top);
+    left: calc(50% - 100px);
+    transform-style: preserve-3d   ;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+    
+}
+
+@keyframes autoRun{
+    from{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to{
+        transform: perspective(1000px) rotateX(-16deg) rotateY(-360deg);
+    }
+}
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0 ;
+    transform: 
+        rotateY(calc((var(--position) - 1) * (360/var(--quantity))* 1deg)) 
+    translateZ(550px);
+}
+
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*.banner .content{
+    position: absolute;
+    left: 50%;
+    top: calc(var(--slider-top) + 420px); 
+    transform: translateX(-50%);
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    z-index: 3;
+    pointer-events: none;
+}*/
+
+
+.banner .content h2{
+    font-size: 3em;
+    color: #25283B;
+
+}
+.banner .slider .model{
+    position: absolute;
+    width: 200px;
+    height: 300px;
+
+    background-image: url(images/Paimon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    top: 50%;
+    left: 50%;
+
+    /* CENTER OF THE 3D RING */
+    transform:
+        translate(-50%, -50%)
+        translateZ(0px);
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.banner .title{
+    position: absolute;
+    left: 50%;
+    top: calc(var(--slider-top) - 80px);
+    transform:
+        translateX(-50%)
+        translateZ(-200px); /* 👈 pushes it back */
+
+    font-family: 'ICA Rubrik Black';
+    font-size: clamp(2.5rem, 6vw, 10rem);
+    color: #25283B;
+    line-height: 1;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.banner .content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:
+        translate(-50%, 120px)
+        translateZ(200px); /* overlap */
+
+    text-align: center;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+
+
+.text-stack{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Main title */
+/* GENSHIN IMPACT — hero */
+.text-stack .title{
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 700;
+    top: calc(var(--slider-top) - 255px);
+}
+/* SINIMAH — signature */
+.text-stack .author-name{
+    font-family: 'Poppins';
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem); /* smaller */
+    letter-spacing: 0.35em;
+    margin: 0;
+    color: #25283B;
+}
+.text-stack .line{
+    width: 120px;
+    height: 2px;
+    background: #222;
+    margin: 14px auto 0;
+}
+
+
+
+
+.text-stack .subtitle{
+    font-size: 1.6rem;
+    letter-spacing: 0.3em;
+    opacity: 0.85;
+    margin-top: 8px;
+}
+
+.details{
+    min-height: 100vh;
+    padding: 80px 10vw;
+    background: #f4f4f4;
+
+    font-family: 'Poppins';
+}
+
+.details h2{
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.card{
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
