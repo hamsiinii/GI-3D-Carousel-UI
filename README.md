@@ -41,16 +41,8 @@ This project explores **3D transforms, perspective, layout hierarchy, and respon
 
 ---
 
-## 📁 Project Structure
-.
-├── index.html
-├── styles.css
-├── images/
-│ ├── Razor.png
-│ ├── Amber.png
-│ ├── Jean.png
-│ ├── Faruzan.png
-│ ├── Klee.png
-│ ├── Engulfing Lightning.png
-│ └── Paimon.png
-└── README.md
+## Workflow
+
+https://github.com/user-attachments/assets/da0a60cd-ad27-48f1-818c-3bf59bfc1240
+
+
